@@ -1,0 +1,61 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 8%;
+  z-index: 1000;
+  transition: all 0.4s ease-in-out;
+}
+
+.navbar-active {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(15px); /* This is the secret for the premium look */
+  padding: 15px 8%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-logo {
+  font-size: 1.8rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.gold { color: var(--gold); }
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 40px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: var(--neon-purple);
+}
+
+.nav-cta {
+  background: transparent;
+  color: white;
+  border: 2px solid var(--neon-purple);
+  padding: 10px 25px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(188, 19, 254, 0.3);
+  transition: 0.3s;
+}
+
+.nav-cta:hover {
+  background: var(--neon-purple);
+  box-shadow: 0 0 20px rgba(188, 19, 254, 0.6);
+}

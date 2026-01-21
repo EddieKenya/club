@@ -1,0 +1,116 @@
+/* Container for the whole section */
+.events-section {
+  padding: 120px 8%;
+  background-color: #050505; /* Matches the dark lounge theme */
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+}
+
+/* The Grid: Splitting text and image */
+.event-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  gap: 80px;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+/* Content Side (Left) */
+.event-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.event-tag {
+  color: #D4AF37; /* Gold */
+  font-size: 1.4rem;
+  font-weight: 900;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+  font-family: 'Oswald', sans-serif;
+}
+
+.event-main-title {
+  color: #bc13fe; /* Afro-Genge Purple */
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 25px;
+  font-family: 'Oswald', sans-serif;
+}
+
+.event-text {
+  color: #999;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 40px;
+  max-width: 500px;
+}
+
+.event-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.event-features li {
+  color: white;
+  font-weight: bold;
+  margin-bottom: 12px;
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+/* Image Side (Right) */
+.event-visual {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.image-border {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  background: #111;
+  width: 100%;
+  max-width: 500px;
+  /* This prevents the image from disappearing or collapsing */
+  min-height: 400px; 
+}
+
+.event-poster-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  /* Ensuring the image shows up clearly */
+  opacity: 1;
+}
+
+/* Mobile Fix: Stacks the content */
+@media (max-width: 1024px) {
+  .event-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .event-text {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .event-visual {
+    order: -1; /* Puts image above text on mobile */
+    margin-bottom: 40px;
+  }
+  
+  .event-features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+}

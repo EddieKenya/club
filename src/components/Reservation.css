@@ -1,0 +1,146 @@
+.res-section {
+  padding: 100px 8%;
+  background-color: #000;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.res-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Info Side */
+.res-title {
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 900;
+  line-height: 0.9;
+  margin-bottom: 20px;
+}
+
+.purple-glow {
+  color: #bc13fe;
+  text-shadow: 0 0 20px rgba(188, 19, 254, 0.4);
+}
+
+.res-subtitle {
+  color: #888;
+  font-size: 1.1rem;
+  margin-bottom: 50px;
+  max-width: 450px;
+}
+
+.vip-perks {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.perk {
+  display: flex;
+  gap: 20px;
+}
+
+.perk-icon {
+  color: #D4AF37; /* Gold */
+  font-size: 1.5rem;
+}
+
+.perk h4 {
+  margin: 0 0 5px 0;
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+.perk p {
+  margin: 0;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* Form Side */
+.res-form-wrapper {
+  background: #0a0a0a;
+  padding: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.res-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-group label {
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  font-weight: 900;
+  color: #D4AF37;
+}
+
+.form-group input, 
+.form-group textarea {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #333;
+  padding: 12px 0;
+  color: white;
+  font-family: inherit;
+  outline: none;
+  transition: 0.3s;
+}
+
+.form-group input:focus, 
+.form-group textarea:focus {
+  border-bottom-color: #bc13fe;
+}
+
+.res-submit {
+  margin-top: 20px;
+  background: #bc13fe;
+  color: white;
+  border: none;
+  padding: 20px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.res-submit:hover {
+  background: white;
+  color: black;
+}
+
+.res-note {
+  margin-top: 20px;
+  font-size: 0.7rem;
+  color: #444;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .res-container {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+  .res-form-wrapper { padding: 30px; }
+}

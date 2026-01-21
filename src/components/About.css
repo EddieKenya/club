@@ -1,0 +1,94 @@
+.about-section {
+  padding: 100px 8%;
+  background-color: #000;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.about-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Forces two equal columns */
+  gap: 80px;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.about-title {
+  font-size: 5.5rem;
+  font-weight: 900;
+  line-height: 0.85;
+  margin-bottom: 25px;
+  color: white;
+}
+
+.gold-text { color: #D4AF37; }
+
+.about-description {
+  color: #888;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+.about-stats {
+  display: flex;
+  gap: 50px;
+}
+
+.stat-num {
+  display: block;
+  font-size: 3rem;
+  font-weight: 900;
+  color: white;
+}
+
+.stat-sub {
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  color: #D4AF37;
+}
+
+/* Map specific styling */
+.about-map-wrapper {
+  height: 550px;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.google-map-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  filter: grayscale(1) invert(0.9) contrast(1.2); /* Keeps it dark mode */
+  pointer-events: none;
+}
+
+.map-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: black;
+  color: #D4AF37;
+  padding: 15px 30px;
+  border: 1px solid #D4AF37;
+  font-weight: 900;
+  z-index: 10;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.about-map-wrapper:hover .map-label { opacity: 1; }
+
+/* Responsive fix for smaller screens */
+@media (max-width: 1024px) {
+  .about-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .about-stats { justify-content: center; }
+  .about-title { font-size: 3.5rem; }
+}

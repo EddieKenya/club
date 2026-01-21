@@ -1,0 +1,137 @@
+/* Enquiry Section Layout */
+.enquiry-section {
+  padding: 120px 8%;
+  background-color: #050505;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+}
+
+.enquiry-container {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr; /* Matches About/Events grid */
+  gap: 100px;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.enquiry-title {
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 900;
+  line-height: 0.9;
+  margin-bottom: 25px;
+  color: white;
+}
+
+.gold-text {
+  color: #D4AF37;
+}
+
+.enquiry-text {
+  color: #888;
+  line-height: 1.8;
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+  max-width: 500px;
+}
+
+.contact-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.meta-item {
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+/* Form Container Styling */
+.enquiry-form-wrapper {
+  background: #0a0a0a;
+  padding: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.enquiry-form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.input-group label {
+  display: block;
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  color: #D4AF37; 
+  margin-bottom: 10px;
+  font-weight: 900;
+}
+
+/* FIX: Dropdown Visibility and Styling */
+.enquiry-select {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #333;
+  color: white; /* Visible text color when closed */
+  padding: 15px 0;
+  font-family: inherit;
+  outline: none;
+  cursor: pointer;
+}
+
+/* This forces the dropdown list to have a visible background and text */
+.enquiry-select option {
+  background-color: #1a1a1a; /* Dark gray to contrast with black background */
+  color: white;             /* Clearly visible white text */
+  padding: 10px;
+}
+
+.enquiry-form textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #333;
+  color: white;
+  padding: 15px 0;
+  font-family: inherit;
+  outline: none;
+  min-height: 150px;
+  resize: none;
+}
+
+.enquiry-submit {
+  background: #bc13fe; /* Neon Purple */
+  color: white;
+  border: none;
+  padding: 20px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.enquiry-submit:hover {
+  background: white;
+  color: black;
+  transform: translateY(-2px);
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 1024px) {
+  .enquiry-container {
+    grid-template-columns: 1fr;
+    gap: 60px;
+    text-align: center;
+  }
+  .enquiry-text {
+    margin: 0 auto 40px;
+  }
+  .enquiry-form-wrapper {
+    padding: 30px;
+  }
+}
