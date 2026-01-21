@@ -5,30 +5,27 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 25px 8%;
-  z-index: 1000;
-  transition: all 0.4s ease-in-out;
-}
-
-.navbar-active {
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(15px); /* This is the secret for the premium look */
-  padding: 15px 8%;
+  padding: 20px 8%;
+  z-index: 2000;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .nav-logo {
-  font-size: 1.8rem;
-  font-weight: 900;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 1.4rem;
   letter-spacing: 2px;
+  color: white;
 }
 
-.gold { color: var(--gold); }
+.gold-text { color: #D4AF37; }
 
 .nav-links {
   display: flex;
   list-style: none;
-  gap: 40px;
+  gap: 30px;
 }
 
 .nav-links a {
@@ -36,26 +33,64 @@
   color: white;
   font-size: 0.85rem;
   font-weight: 700;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   transition: 0.3s;
 }
 
-.nav-links a:hover {
-  color: var(--neon-purple);
-}
-
-.nav-cta {
-  background: transparent;
-  color: white;
-  border: 2px solid var(--neon-purple);
-  padding: 10px 25px;
-  font-weight: bold;
+/* --- Hamburger Icon (The Options Menu) --- */
+.nav-hamburger {
+  display: none; /* Hidden on desktop */
+  flex-direction: column;
+  gap: 6px;
   cursor: pointer;
-  box-shadow: 0 0 10px rgba(188, 19, 254, 0.3);
-  transition: 0.3s;
+  z-index: 2001;
 }
 
-.nav-cta:hover {
-  background: var(--neon-purple);
-  box-shadow: 0 0 20px rgba(188, 19, 254, 0.6);
+.bar {
+  width: 28px;
+  height: 4px;
+  background-color: white;
+  border-radius: 10px; /* Makes them rounded like your screenshot */
+  transition: all 0.3s ease-in-out;
+}
+
+/* --- Mobile Responsive Rules --- */
+@media (max-width: 968px) {
+  .nav-hamburger {
+    display: flex; /* Show icon on mobile */
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Hidden off-screen to the right */
+    width: 100%;
+    height: 100vh;
+    background: #000;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+    gap: 40px;
+  }
+
+  .nav-links.active {
+    right: 0; /* Slides into view */
+  }
+
+  .nav-links a {
+    font-size: 2rem; /* Big text for easy mobile tapping */
+    font-family: 'Oswald', sans-serif;
+  }
+
+  /* Animates the 3 bars into an 'X' when menu is open */
+  .bar.open:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+  }
+  .bar.open:nth-child(2) {
+    opacity: 0;
+  }
+  .bar.open:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+  }
 }

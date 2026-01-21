@@ -26,3 +26,12 @@ h1, h2 {
 html {
   scroll-behavior: smooth;
 }
+/* Add this to your global index.css or App.css */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden; /* Prevents side-scrolling on mobile */
+  width: 100%;
+}

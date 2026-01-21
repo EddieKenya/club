@@ -92,3 +92,29 @@
   .about-stats { justify-content: center; }
   .about-title { font-size: 3.5rem; }
 }
+@media (max-width: 968px) {
+  .about-container, 
+  .event-container {
+    grid-template-columns: 1fr !important; /* Stack columns */
+    gap: 30px;
+    text-align: center;
+  }
+
+  .about-map-wrapper, 
+  .event-visual {
+    order: -1; /* Image/Map appears first */
+    height: 350px;
+  }
+
+  .about-title, 
+  .event-main-title {
+    font-size: 2.8rem !important;
+  }
+
+  .about-stats, 
+  .event-features {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+}

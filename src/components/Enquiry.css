@@ -135,3 +135,26 @@
     padding: 30px;
   }
 }
+@media (max-width: 968px) {
+  .res-container, 
+  .enquiry-container {
+    grid-template-columns: 1fr !important;
+    gap: 40px;
+  }
+
+  .res-form-wrapper, 
+  .enquiry-form-wrapper {
+    padding: 30px 20px;
+  }
+
+  /* Prevent auto-zoom on iOS by setting font-size to 16px */
+  input, select, textarea {
+    font-size: 16px !important;
+    padding: 15px 5px !important;
+  }
+
+  .res-title, 
+  .enquiry-title {
+    font-size: 3rem !important;
+  }
+}
