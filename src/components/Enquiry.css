@@ -9,7 +9,7 @@
 
 .enquiry-container {
   display: grid;
-  grid-template-columns: 1fr 1.2fr; /* Matches About/Events grid */
+  grid-template-columns: 1fr 1.2fr;
   gap: 100px;
   width: 100%;
   max-width: 1400px;
@@ -36,19 +36,6 @@
   max-width: 500px;
 }
 
-.contact-meta {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.meta-item {
-  color: white;
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-}
-
 /* Form Container Styling */
 .enquiry-form-wrapper {
   background: #0a0a0a;
@@ -71,41 +58,42 @@
   font-weight: 900;
 }
 
-/* FIX: Dropdown Visibility and Styling */
-.enquiry-select {
+/* THE FIX: Standardizing all inputs to remove white boxes */
+.enquiry-form input[type="text"],
+.enquiry-select,
+.enquiry-form textarea {
   width: 100%;
-  background: transparent;
+  background: transparent !important;
   border: none;
   border-bottom: 1px solid #333;
-  color: white; /* Visible text color when closed */
+  color: white !important;
   padding: 15px 0;
   font-family: inherit;
   outline: none;
-  cursor: pointer;
+  border-radius: 0;
 }
 
-/* This forces the dropdown list to have a visible background and text */
+/* This block specifically kills the white/blue background from browser autofill */
+.enquiry-form input:-webkit-autofill,
+.enquiry-form input:-webkit-autofill:hover, 
+.enquiry-form input:-webkit-autofill:focus {
+  -webkit-text-fill-color: white !important;
+  -webkit-box-shadow: 0 0 0px 1000px #0a0a0a inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
 .enquiry-select option {
-  background-color: #1a1a1a; /* Dark gray to contrast with black background */
-  color: white;             /* Clearly visible white text */
-  padding: 10px;
+  background-color: #1a1a1a;
+  color: white;
 }
 
 .enquiry-form textarea {
-  width: 100%;
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid #333;
-  color: white;
-  padding: 15px 0;
-  font-family: inherit;
-  outline: none;
   min-height: 150px;
   resize: none;
 }
 
 .enquiry-submit {
-  background: #bc13fe; /* Neon Purple */
+  background: #bc13fe; 
   color: white;
   border: none;
   padding: 20px;
@@ -121,40 +109,13 @@
   transform: translateY(-2px);
 }
 
-/* Mobile Responsive Adjustments */
-@media (max-width: 1024px) {
-  .enquiry-container {
-    grid-template-columns: 1fr;
-    gap: 60px;
-    text-align: center;
-  }
-  .enquiry-text {
-    margin: 0 auto 40px;
-  }
-  .enquiry-form-wrapper {
-    padding: 30px;
-  }
-}
+/* Mobile Responsive */
 @media (max-width: 968px) {
-  .res-container, 
   .enquiry-container {
     grid-template-columns: 1fr !important;
     gap: 40px;
   }
-
-  .res-form-wrapper, 
-  .enquiry-form-wrapper {
-    padding: 30px 20px;
-  }
-
-  /* Prevent auto-zoom on iOS by setting font-size to 16px */
   input, select, textarea {
     font-size: 16px !important;
-    padding: 15px 5px !important;
-  }
-
-  .res-title, 
-  .enquiry-title {
-    font-size: 3rem !important;
   }
 }

@@ -8,43 +8,63 @@ const Enquiry = () => {
   const handleFeedback = (e) => {
     e.preventDefault();
 
+    // Using your second Template ID: template_qvhjwri
     emailjs.sendForm(
-      'YOUR_SERVICE_ID', 
-      'YOUR_ENQUIRY_TEMPLATE_ID', 
+      'service_za629lo',   
+      'template_qvhjwri', 
       form.current, 
-      'YOUR_PUBLIC_KEY'
+      'xaMDSoAIAi8BsEHBb'    
     )
     .then(() => {
-        alert("Feedback Received! Management has been notified via email.");
-        e.target.reset();
+        alert("Thank you! Your feedback has been sent to management.");
+        if (form.current) {
+          form.current.reset(); // This clears the name, subject, and message fields
+        }
     }, (error) => {
-        console.log(error.text);
+        console.log("Error sending enquiry:", error.text);
+        alert("System busy. Please try again later.");
     });
   };
 
   return (
     <section id="enquiry" className="enquiry-section">
       <div className="enquiry-container">
-        <div className="enquiry-content">
-          <h2 className="enquiry-title">VOICE YOUR <br /><span className="gold-text">THOUGHTS</span></h2>
-          <p className="enquiry-text">Your grievances and suggestions go straight to our inbox.</p>
+        <div className="enquiry-info">
+          <h2 className="enquiry-title">GET IN <span className="gold-text">TOUCH</span></h2>
+          <p className="enquiry-text">
+            Have a complaint or a suggestion? We value your feedback to keep Kwa Jose the best in Juja.
+          </p>
         </div>
-
+        
         <div className="enquiry-form-wrapper">
           <form ref={form} className="enquiry-form" onSubmit={handleFeedback}>
             <div className="input-group">
               <label>SUBJECT</label>
               <select name="subject" className="enquiry-select">
-                <option value="Grievance">GRIEVANCE / COMPLAINT</option>
-                <option value="Improvement">IMPROVEMENT SUGGESTION</option>
-                <option value="General">GENERAL ENQUIRY</option>
+                <option value="GENERAL ENQUIRY">GENERAL ENQUIRY</option>
+                <option value="GRIEVANCE">GRIEVANCE / COMPLAINT</option>
+                <option value="IMPROVEMENT">IMPROVEMENT SUGGESTION</option>
               </select>
             </div>
+
+            <div className="input-group">
+              <label>YOUR NAME</label>
+              {/* autoComplete="off" helps stop the browser from forcing a white background */}
+              <input 
+                type="text" 
+                name="from_name" 
+                required 
+                placeholder="Enter your name" 
+                autoComplete="off" 
+              />
+            </div>
+
             <div className="input-group">
               <label>YOUR MESSAGE</label>
               <textarea name="message" placeholder="Details..." required></textarea>
             </div>
-            <button type="submit" className="enquiry-submit">SUBMIT FEEDBACK</button>
+
+            <button type="submit" className="enquiry-submit">SUBMIT</button>
           </form>
         </div>
       </div>
