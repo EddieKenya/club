@@ -1,15 +1,13 @@
 import React from 'react';
 import './Home.css';
+import homeImage from '../assets/home.webp'; // updated to local image
 
 const Home = () => {
-  // Use the specific background image requested
-  const backgroundImageUrl = "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSy1uXu3haAEsqj9ZEzBQwLrQIWrxT8h4ur1jB1KWc7w3WjyT_m18ojm04PEwGQ2LmxvGIcuRRn6HAL2kRfjuVG81rM8Q0ZqeR9T2QOslvkNEi3GuCl-jeIEnuVzhkZhMqtBYAUrUezsjAnh=s1360-w1360-h1020-rw";
-
   return (
     <section 
       id="home" 
       className="home-hero" 
-      style={{ backgroundImage: `url(${backgroundImageUrl})` }}
+      style={{ backgroundImage: `url(${homeImage})` }} // local image
     >
       <div className="home-overlay"></div>
       

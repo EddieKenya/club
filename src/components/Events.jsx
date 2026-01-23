@@ -1,12 +1,13 @@
 import React from 'react';
 import './Events.css';
+import poster from '../assets/events.webp'; 
 
 const Events = () => {
   const eventData = {
     title: "THIS FRIDAY",
     subTitle: "THE AFRO-GENGE MIX",
     description: "Experience the ultimate blend of high-energy Afrobeat and Gengetone. Join us for non-stop dancing and an unforgettable vibe with resident DJs spinning until dawn.",
-    image: "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzrigxBmb0VxTK7Egcnc-0fwjagAXM7NcJ8m_P3-s1qG7U_NEvdI6qToEqkua2EX1RXqo3UWGt7JXBWOhN_wV9keWwBjkI30UiR-PVAh9HX0FJDYIjTypwdaF8LfYjxh5X59X3Evq4aqukp=s1360-w1360-h1020-rw", 
+    image: poster, 
     features: [
       "Resident DJ Lineup",
       "24/7 Dance Floor",
@@ -30,8 +31,6 @@ const Events = () => {
               <li key={index}>• {feature}</li>
             ))}
           </ul>
-          
-          {/* Button has been removed from here */}
         </div>
 
         {/* Visual Side */}
@@ -41,9 +40,10 @@ const Events = () => {
               src={eventData.image} 
               alt="Afro-Genge Party Poster" 
               className="event-poster-img"
+              loading="lazy" 
               onError={(e) => {
-                e.target.onerror = null; 
-                e.target.src="https://images.unsplash.com/photo-1514525253361-bee8a197c9c0?q=80&w=1000&auto=format&fit=crop";
+                e.target.onerror = null;
+                e.target.src = "https://images.unsplash.com/photo-1514525253361-bee8a197c9c0?q=80&w=800&auto=format&fit=crop"; 
               }}
             />
           </div>

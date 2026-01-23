@@ -22,6 +22,7 @@ const Reservation = () => {
       .then(() => {
         setStatus('sent');
         form.current.reset();
+        setEventDate(today); // Reset date to today after sending
 
         // Return button to CONFIRM REQUEST after 2s
         setTimeout(() => setStatus('idle'), 2000);
@@ -33,6 +34,7 @@ const Reservation = () => {
   };
 
   const today = new Date().toISOString().split('T')[0];
+  const [eventDate, setEventDate] = useState(today); // Default date state
 
   return (
     <section id="reservations" className="res-section">
@@ -100,6 +102,8 @@ const Reservation = () => {
                   type="date"
                   name="event_date"
                   min={today}
+                  value={eventDate}                        // Default to today
+                  onChange={(e) => setEventDate(e.target.value)} // Editable
                   required
                 />
               </div>

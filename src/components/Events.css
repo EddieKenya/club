@@ -1,7 +1,7 @@
 /* Container for the whole section */
 .events-section {
   padding: 120px 8%;
-  background-color: #050505; /* Matches the dark lounge theme */
+  background-color: #050505;
   min-height: 90vh;
   display: flex;
   align-items: center;
@@ -10,7 +10,7 @@
 /* The Grid: Splitting text and image */
 .event-container {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  grid-template-columns: 1fr 1fr;
   gap: 80px;
   width: 100%;
   max-width: 1400px;
@@ -25,7 +25,7 @@
 }
 
 .event-tag {
-  color: #D4AF37; /* Gold */
+  color: #D4AF37;
   font-size: 1.4rem;
   font-weight: 900;
   margin-bottom: 10px;
@@ -34,7 +34,7 @@
 }
 
 .event-main-title {
-  color: #bc13fe; /* Afro-Genge Purple */
+  color: #bc13fe;
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 900;
   line-height: 1.1;
@@ -73,20 +73,19 @@
 
 .image-border {
   border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 15px;
   background: #111;
   width: 100%;
-  max-width: 500px;
-  /* This prevents the image from disappearing or collapsing */
-  min-height: 400px; 
+  max-width: 500px; /* Kept your size */
+  height: 400px;    /* Fixed height to ensure it fills the "box" */
+  overflow: hidden; /* Clips the image to the box edges */
+  padding: 0;       /* Removed padding so image touches the border */
 }
 
 .event-poster-img {
   width: 100%;
-  height: auto;
+  height: 100%;     /* Force image to fill the 400px height */
   display: block;
-  object-fit: cover;
-  /* Ensuring the image shows up clearly */
+  object-fit: cover; /* Crops image slightly to fill box without distortion */
   opacity: 1;
 }
 
@@ -103,7 +102,7 @@
   }
   
   .event-visual {
-    order: -1; /* Puts image above text on mobile */
+    order: -1; 
     margin-bottom: 40px;
   }
   
@@ -114,29 +113,28 @@
     gap: 20px;
   }
 }
+
 @media (max-width: 968px) {
-  .about-container, 
   .event-container {
-    grid-template-columns: 1fr !important; /* Stack columns */
+    grid-template-columns: 1fr !important;
     gap: 30px;
     text-align: center;
   }
 
-  .about-map-wrapper, 
   .event-visual {
-    order: -1; /* Image/Map appears first */
-    height: 350px;
+    order: -1;
+    height: 350px; /* Slightly shorter on small screens */
+  }
+  
+  .image-border {
+    height: 100%; /* Let it fill the 350px container */
   }
 
-  .about-title, 
   .event-main-title {
     font-size: 2.8rem !important;
   }
 
-  .about-stats, 
   .event-features {
     justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
   }
 }
