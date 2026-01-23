@@ -1,4 +1,6 @@
-/* Enquiry Section Layout */
+/* ===============================
+   Enquiry Section Layout
+================================ */
 .enquiry-section {
   padding: 120px 8%;
   background-color: #050505;
@@ -16,6 +18,9 @@
   margin: 0 auto;
 }
 
+/* ===============================
+   Left Content
+================================ */
 .enquiry-title {
   font-size: clamp(3rem, 6vw, 5rem);
   font-weight: 900;
@@ -36,7 +41,9 @@
   max-width: 500px;
 }
 
-/* Form Container Styling */
+/* ===============================
+   Form Wrapper
+================================ */
 .enquiry-form-wrapper {
   background: #0a0a0a;
   padding: 50px;
@@ -49,37 +56,34 @@
   gap: 30px;
 }
 
+/* ===============================
+   Input Groups
+================================ */
 .input-group label {
   display: block;
   font-size: 0.7rem;
   letter-spacing: 2px;
-  color: #D4AF37; 
+  color: #D4AF37;
   margin-bottom: 10px;
   font-weight: 900;
 }
 
-/* THE FIX: Standardizing all inputs to remove white boxes */
+/* Inputs */
 .enquiry-form input[type="text"],
-.enquiry-select,
-.enquiry-form textarea {
+.enquiry-form textarea,
+.enquiry-select {
   width: 100%;
-  background: transparent !important;
+  background: transparent;
   border: none;
   border-bottom: 1px solid #333;
-  color: white !important;
+  color: white;
   padding: 15px 0;
   font-family: inherit;
   outline: none;
-  border-radius: 0;
 }
 
-/* This block specifically kills the white/blue background from browser autofill */
-.enquiry-form input:-webkit-autofill,
-.enquiry-form input:-webkit-autofill:hover, 
-.enquiry-form input:-webkit-autofill:focus {
-  -webkit-text-fill-color: white !important;
-  -webkit-box-shadow: 0 0 0px 1000px #0a0a0a inset !important;
-  transition: background-color 5000s ease-in-out 0s;
+.enquiry-select {
+  cursor: pointer;
 }
 
 .enquiry-select option {
@@ -92,30 +96,58 @@
   resize: none;
 }
 
+/* ===============================
+   Submit Button
+================================ */
 .enquiry-submit {
-  background: #bc13fe; 
+  background: #bc13fe;
   color: white;
   border: none;
   padding: 20px;
   font-weight: 900;
   letter-spacing: 2px;
   cursor: pointer;
-  transition: 0.3s ease;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
 }
 
-.enquiry-submit:hover {
+.enquiry-submit:hover:not(:disabled) {
   background: white;
   color: black;
   transform: translateY(-2px);
 }
 
-/* Mobile Responsive */
-@media (max-width: 968px) {
+.enquiry-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ===============================
+   Responsive
+================================ */
+@media (max-width: 1024px) {
   .enquiry-container {
-    grid-template-columns: 1fr !important;
-    gap: 40px;
+    grid-template-columns: 1fr;
+    gap: 60px;
+    text-align: center;
   }
-  input, select, textarea {
-    font-size: 16px !important;
+
+  .enquiry-text {
+    margin: 0 auto 40px;
+  }
+
+  .enquiry-form-wrapper {
+    padding: 30px;
+  }
+}
+
+@media (max-width: 968px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px !important; /* Prevent iOS zoom */
+  }
+
+  .enquiry-title {
+    font-size: 3rem !important;
   }
 }
