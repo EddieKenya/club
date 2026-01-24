@@ -53,7 +53,7 @@ const Enquiry = () => {
             <div className="input-group">
               <label>SUBJECT</label>
               <select name="subject" className="enquiry-select">
-                <option value="GENERAL ENQUIRY">GENERAL ENQUIRY</option>
+                <option value="GENERAL ENQUIRY">GENERAL FEEDBACK</option>
                 <option value="GRIEVANCE">GRIEVANCE / COMPLAINT</option>
                 <option value="IMPROVEMENT">IMPROVEMENT SUGGESTION</option>
               </select>
