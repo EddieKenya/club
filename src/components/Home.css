@@ -1,113 +1,89 @@
 .home-hero {
   height: 100vh;
+  /* Use a more stable height for mobile browsers */
+  height: calc(var(--vh, 1vh) * 100); 
   width: 100%;
   background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+  background-position: center center;
+  /* REMOVED: background-attachment: fixed (This was causing the crop) */
+  background-repeat: no-repeat;
+  
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   text-align: center;
   opacity: 0;
-  
-  /* Smoothly cross-fade the background images */
   transition: opacity 1.5s ease-in-out, background-image 1.2s ease-in-out;
+  overflow: hidden;
 }
 
 .home-hero.hero-visible {
   opacity: 1;
 }
 
-/* Ensure the overlay stays above the shifting background but below content */
 .home-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8));
+  /* Darker gradient to help white text pop */
+  background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.8) 100%);
   z-index: 1;
 }
 
-/* Keep your existing animations for title, outline, and button below... */
+.home-content {
+  position: relative;
+  z-index: 2;
+  width: 95%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  /* Adds a subtle dark blur behind text to ensure it's viewable on any photo */
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(4px);
+  border-radius: 20px;
+}
 
 .hero-title {
   font-family: 'Inter', sans-serif;
   font-weight: 900;
-  font-size: clamp(3rem, 12vw, 8rem);
-  line-height: 0.85;
+  /* Smaller font scaling so it doesn't leak off the screen */
+  font-size: clamp(2.2rem, 8vw, 6.5rem);
+  line-height: 1;
   color: white;
   margin-bottom: 20px;
-  transform: translateY(30px);
-  opacity: 0;
-  transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  position: relative;
-  z-index: 2;
-}
-
-.hero-title.animate-title {
-  transform: translateY(0);
-  opacity: 1;
+  text-transform: uppercase;
 }
 
 .outline {
   display: block;
   color: transparent;
   -webkit-text-stroke: 1px white;
-  text-transform: uppercase;
-  animation: floating 4s ease-in-out infinite;
-}
-
-@keyframes floating {
-  0%, 100% { transform: translateY(0); filter: drop-shadow(0 0 0px #fff); }
-  50% { transform: translateY(-10px); filter: drop-shadow(0 0 10px rgba(255,255,255,0.3)); }
 }
 
 .hero-subtitle {
-  position: relative;
-  z-index: 2;
-  font-size: 1.1rem;
-  letter-spacing: 4px;
-  color: #fff;
-  font-weight: 400;
-  margin-bottom: 40px;
-  text-transform: uppercase;
-  opacity: 0;
-  transition: opacity 1s ease-out 0.8s;
-}
-
-.hero-subtitle.animate-subtitle {
-  opacity: 1;
-}
-
-.hero-actions {
-  position: relative;
-  z-index: 2;
-  opacity: 0;
-  transform: scale(0.9);
-  transition: all 0.6s ease-out 1.2s;
-}
-
-.hero-actions.animate-button {
-  opacity: 1;
-  transform: scale(1);
+  font-size: clamp(0.75rem, 2vw, 1rem);
+  letter-spacing: 3px;
+  color: #D4AF37; /* Gold color for better visibility */
+  font-weight: 600;
+  margin-bottom: 35px;
 }
 
 .main-button {
   display: inline-block;
-  padding: 15px 40px;
-  border: 1.5px solid #D4AF37;
+  padding: 14px 35px;
+  border: 2px solid #D4AF37;
   color: white;
   text-decoration: none;
   font-weight: 900;
   letter-spacing: 2px;
-  background: transparent;
+  background: rgba(0,0,0,0.5); /* Semi-transparent button */
   transition: 0.3s ease-in-out;
 }
 
 .main-button:hover {
   background: #D4AF37;
   color: black;
-  box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
 }
