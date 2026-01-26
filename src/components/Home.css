@@ -3,30 +3,34 @@
   width: 100%;
   background-size: cover;
   background-position: center;
-  background-attachment: fixed; /* Parallax effect */
+  background-attachment: fixed;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   text-align: center;
+  opacity: 0;
+  
+  /* Smoothly cross-fade the background images */
+  transition: opacity 1.5s ease-in-out, background-image 1.2s ease-in-out;
 }
 
-/* Dark overlay to ensure text readability */
+.home-hero.hero-visible {
+  opacity: 1;
+}
+
+/* Ensure the overlay stays above the shifting background but below content */
 .home-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6); /* Adjust darkness here */
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8));
   z-index: 1;
 }
 
-.home-content {
-  position: relative;
-  z-index: 2;
-  width: 90%;
-}
+/* Keep your existing animations for title, outline, and button below... */
 
 .hero-title {
   font-family: 'Inter', sans-serif;
@@ -35,29 +39,65 @@
   line-height: 0.85;
   color: white;
   margin-bottom: 20px;
+  transform: translateY(30px);
+  opacity: 0;
+  transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  z-index: 2;
+}
+
+.hero-title.animate-title {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .outline {
   display: block;
   color: transparent;
-  -webkit-text-stroke: 1px white; /* The hollow look from your screenshot */
+  -webkit-text-stroke: 1px white;
   text-transform: uppercase;
+  animation: floating 4s ease-in-out infinite;
+}
+
+@keyframes floating {
+  0%, 100% { transform: translateY(0); filter: drop-shadow(0 0 0px #fff); }
+  50% { transform: translateY(-10px); filter: drop-shadow(0 0 10px rgba(255,255,255,0.3)); }
 }
 
 .hero-subtitle {
+  position: relative;
+  z-index: 2;
   font-size: 1.1rem;
   letter-spacing: 4px;
   color: #fff;
   font-weight: 400;
   margin-bottom: 40px;
   text-transform: uppercase;
+  opacity: 0;
+  transition: opacity 1s ease-out 0.8s;
 }
 
-/* The Gold button style from image_d5cdae.png */
+.hero-subtitle.animate-subtitle {
+  opacity: 1;
+}
+
+.hero-actions {
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 0.6s ease-out 1.2s;
+}
+
+.hero-actions.animate-button {
+  opacity: 1;
+  transform: scale(1);
+}
+
 .main-button {
   display: inline-block;
   padding: 15px 40px;
-  border: 1.5px solid #D4AF37; /* Gold border */
+  border: 1.5px solid #D4AF37;
   color: white;
   text-decoration: none;
   font-weight: 900;
@@ -69,26 +109,5 @@
 .main-button:hover {
   background: #D4AF37;
   color: black;
-}
-
-@media (max-width: 768px) {
-  .hero-title { font-size: 3.5rem; }
-  .hero-subtitle { font-size: 0.8rem; letter-spacing: 2px; }
-}
-@media (max-width: 968px) {
-  .hero-title {
-    font-size: 3.5rem !important; /* Forces smaller size on mobile */
-    line-height: 1.1;
-  }
-
-  .hero-subtitle {
-    font-size: 0.85rem;
-    letter-spacing: 2px;
-    padding: 0 10px;
-  }
-
-  .main-button {
-    padding: 12px 30px;
-    font-size: 0.9rem;
-  }
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
 }
