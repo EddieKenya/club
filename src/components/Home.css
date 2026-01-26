@@ -1,89 +1,170 @@
+/* =========================================
+   HOME HERO SECTION
+   ========================================= */
 .home-hero {
+  /* Dynamic height fix for mobile browsers (iPhone) */
   height: 100vh;
-  /* Use a more stable height for mobile browsers */
   height: calc(var(--vh, 1vh) * 100); 
   width: 100%;
-  background-size: cover;
-  background-position: center center;
-  /* REMOVED: background-attachment: fixed (This was causing the crop) */
-  background-repeat: no-repeat;
-  
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   text-align: center;
-  opacity: 0;
-  transition: opacity 1.5s ease-in-out, background-image 1.2s ease-in-out;
   overflow: hidden;
+  background-color: #000; /* Ensures it never flashes white */
 }
 
-.home-hero.hero-visible {
+/* Background Layer System for seamless shuffling */
+.hero-bg-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 2s ease-in-out; /* Buttery smooth cross-fade */
+  z-index: 0;
+}
+
+/* Specific fix for the Entrance image to show business name at the top */
+.hero-bg-layer.pos-top {
+  background-position: center top !important;
+}
+
+/* The active image in the shuffle */
+.hero-bg-layer.active {
   opacity: 1;
 }
 
+/* Dark Overlay for readability */
 .home-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  /* Darker gradient to help white text pop */
-  background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.8) 100%);
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8));
   z-index: 1;
 }
 
+/* =========================================
+   CONTENT & TEXT
+   ========================================= */
 .home-content {
   position: relative;
   z-index: 2;
-  width: 95%;
+  width: 90%;
   max-width: 1200px;
-  margin: 0 auto;
-  padding: 40px 20px;
-  /* Adds a subtle dark blur behind text to ensure it's viewable on any photo */
-  background: rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(4px);
-  border-radius: 20px;
 }
 
 .hero-title {
   font-family: 'Inter', sans-serif;
   font-weight: 900;
-  /* Smaller font scaling so it doesn't leak off the screen */
-  font-size: clamp(2.2rem, 8vw, 6.5rem);
-  line-height: 1;
+  font-size: clamp(2.5rem, 10vw, 7.5rem);
+  line-height: 0.9;
   color: white;
   margin-bottom: 20px;
-  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s ease-out;
+}
+
+/* Reveal title when section is loaded */
+.hero-visible .hero-title {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .outline {
   display: block;
   color: transparent;
   -webkit-text-stroke: 1px white;
+  text-transform: uppercase;
 }
 
 .hero-subtitle {
-  font-size: clamp(0.75rem, 2vw, 1rem);
-  letter-spacing: 3px;
-  color: #D4AF37; /* Gold color for better visibility */
-  font-weight: 600;
-  margin-bottom: 35px;
+  font-size: clamp(0.8rem, 2vw, 1.1rem);
+  letter-spacing: 4px;
+  color: #fff;
+  font-weight: 400;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity 1s ease-out 0.5s;
+}
+
+.hero-visible .hero-subtitle {
+  opacity: 1;
+}
+
+/* =========================================
+   BUTTON STYLE
+   ========================================= */
+.hero-actions {
+  opacity: 0;
+  transition: opacity 1s ease-out 0.8s;
+}
+
+.hero-visible .hero-actions {
+  opacity: 1;
 }
 
 .main-button {
   display: inline-block;
-  padding: 14px 35px;
-  border: 2px solid #D4AF37;
+  padding: 15px 40px;
+  border: 1.5px solid #D4AF37; /* Gold Border */
   color: white;
   text-decoration: none;
   font-weight: 900;
   letter-spacing: 2px;
-  background: rgba(0,0,0,0.5); /* Semi-transparent button */
+  background: transparent;
   transition: 0.3s ease-in-out;
 }
 
 .main-button:hover {
   background: #D4AF37;
   color: black;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+}
+
+/* =========================================
+   INPUT DATA ENTRY FIX (Autofill)
+   Prevents fields from turning white/blue
+   ========================================= */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: white !important;
+  -webkit-box-shadow: 0 0 0px 1000px #050505 inset !important; /* Match your background color */
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* =========================================
+   MOBILE RESPONSIVENESS
+   ========================================= */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 3.2rem;
+    line-height: 1.1;
+  }
+  
+  .hero-subtitle {
+    letter-spacing: 2px;
+    font-size: 0.85rem;
+  }
+  
+  .main-button {
+    padding: 12px 30px;
+    font-size: 0.9rem;
+  }
 }
