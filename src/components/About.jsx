@@ -2,8 +2,13 @@ import React from 'react';
 import './About.css';
 
 const About = () => {
-  // This is the link for when they click to open in a new tab
-  const mapRedirectUrl = "https://www.google.com/maps/place/Kwa+Jose/@-1.1030046,37.0130983,17z/";
+  // Stable link for the "Open in Maps" button focusing on Kwa Jose
+  const mapRedirectUrl = "https://www.google.com/maps/search/?api=1&query=Kwa+Jose+Lounge+Juja";
+
+  // Search-based Embed URL - more stable than complex coordinate parameters
+  const mapEmbedUrl = "https://www.google.com/maps/embed/v1/search?key=YOUR_API_KEY&q=Kwa+Jose+Lounge+Juja";
+  // NOTE: If you don't have an API key, use the simplified search URL below:
+  const simpleEmbed = "https://maps.google.com/maps?q=Kwa%20Jose%20Lounge%20Juja&t=&z=15&ie=UTF8&iwloc=&output=embed";
 
   return (
     <section id="about" className="about-section">
@@ -31,17 +36,19 @@ const About = () => {
           </div>
         </div>
 
-        {/* Right Side: Centered Map Container */}
+        {/* Right Side: Map Container */}
         <div className="about-map-wrapper">
           <a href={mapRedirectUrl} target="_blank" rel="noopener noreferrer" className="map-touch-layer">
             <div className="map-label">OPEN IN GOOGLE MAPS</div>
-            <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.043322409745!2d37.01052337424163!3d-1.10300459888636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f481011c7169d%3A0xe5e7676508978158!2sKwa%20Jose!5e0!3m2!1sen!2ske!4v1705862000000!5m2!1sen!2ske" 
-              className="google-map-iframe"
-              allowFullScreen="" 
-              loading="lazy" 
-              title="Kwa Jose Location"
-            ></iframe>
+            <div className="map-frame-container">
+              <iframe 
+                src={simpleEmbed} 
+                className="google-map-iframe"
+                allowFullScreen="" 
+                loading="lazy" 
+                title="Kwa Jose Location"
+              ></iframe>
+            </div>
           </a>
         </div>
 
